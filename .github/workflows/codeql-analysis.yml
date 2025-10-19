@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 0 * * 1'  # Weekly on Monday
+    - cron: '0 0 * * 1'
 
 jobs:
   analyze:
@@ -39,11 +39,3 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
-        upload: true
-        output: sarif-results
-        
-    - name: Upload CodeQL results
-      uses: actions/upload-artifact@v3
-      with:
-        name: codeql-results
-        path: sarif-result
